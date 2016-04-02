@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-f = open("tianchi_fresh_comp_train_item.csv")
+f = open("data.csv")
 context = f.readlines()
 
 
@@ -14,7 +14,7 @@ context = f.readlines()
 ### x_feature
 ### y_label
 
-import numpy as ny
+import numpy as np
 
 train_day29 = []
 offline_candidate_day30 = []
@@ -23,7 +23,7 @@ online_candidate_day31 = []
 for line in context:
 	line = line.replace('\n', '')
 	array = line.split(',')
-	if(array[0]=='user_id'):
+	if array[0] == 'user_id':
 		continue
 
 	day = int(array[-1])
@@ -64,7 +64,7 @@ for line in context:
 
 	if uid in ui_dict[act_type]:
 		ui_dict[act_type][uid] += 1
-	else
+	else:
 		ui_dict[act_type][uid] = 1
 
 #for label
@@ -147,7 +147,7 @@ lx = sorted(lx, key = lambda x:x[1], reverse = True)
 #print lx
 print '---------------------'
 
-wf.open('ans.csv', w)
+wf = open('ans.csv', 'w')
 wf.write('user_id, item_id\n')
 
 for i in range(437):
